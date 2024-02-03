@@ -1,16 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { HeaderComponentComponent } from './components/header-component/header-component.component';
+import { HomeComponentComponent } from './components/home-component/home-component.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FooterComponentComponent } from './components/footer-component/footer-component.component';
+import { HeaderComponent } from './components/header/header.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
+
+const routes: Routes = [
+  {
+    path: "",
+    component:  HomeComponentComponent,
+    
+  },
+  
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponentComponent
+    HomeComponentComponent,
+
+    FooterComponentComponent,
+     HeaderComponent
+  
   ],
   imports: [
-    BrowserModule
+    [BrowserModule, RouterModule.forRoot(routes),
+    CarouselModule.forRoot()
+  ],
   ],
   providers: [],
   bootstrap: [AppComponent]
