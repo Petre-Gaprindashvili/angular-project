@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
+
 export class HeaderComponent implements OnInit {
   images: string[] = [
-    ' https://valor-software.com/ngx-bootstrap/assets/images/nature/2.jpg',
-    'https://valor-software.com/ngx-bootstrap/assets/images/nature/3.jpg',
-    
-    // Add more image paths as needed
+    'https://images.squarespace-cdn.com/content/v1/5e7bd4d9645ae354fdd81113/d51a67e8-0560-4554-87f8-d862e8d3ec37/M+104.jpg',
+    "https://w.wallha.com/ws/12/zIADxn8k.jpg"    
+  
   ];
 
   currentIndex: number = 0;
@@ -18,10 +19,26 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     setInterval(() => {
       this.nextSlide();
-    }, 5000); // Change image every 5 seconds, adjust as needed
+    }, 4000); 
   }
   nextSlide() {
     this.currentIndex = (this.currentIndex === this.images.length - 1) ? 0 : this.currentIndex + 1;
   }
+  isSticky: boolean = false;
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    if(window.scrollY >=70){
+this.isSticky = true
+    } else{
+      this.isSticky =false
+    }
+      // this.isSticky = window.pageYOffset >= 100;
   }
+
+   
+  
+}
+  
+  
 

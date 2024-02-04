@@ -1,0 +1,11 @@
+footer{
+    background-color: black;
+    min-height: 50px;
+}
+h3{
+    font-size: large;
+    color: #fff;
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 12px;
+}
