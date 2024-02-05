@@ -6,8 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FooterComponentComponent } from './components/footer-component/footer-component.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { HttpClientModule } from '@angular/common/http'; 
-
+import { HttpClientModule } from '@angular/common/http';
+import { ProudctsInfoComponent } from './components/proudcts-info/proudcts-info.component';
 
 
 const routes: Routes = [
@@ -16,6 +16,11 @@ const routes: Routes = [
     component:  HomeComponentComponent,
     
   },
+  {
+    path:":id",
+    component: ProudctsInfoComponent,
+  }
+
   
 ];
 
@@ -23,9 +28,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponentComponent,
-
     FooterComponentComponent,
-     HeaderComponent
+     HeaderComponent,
+     ProudctsInfoComponent
   
   ],
   imports: [

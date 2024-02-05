@@ -1,39 +1,31 @@
 <ul class="nav nav-pills">
-
-    <li>
-    <li *ngFor="let category of categoriesData" class="nav-item"> 
-        <button (click)="clickActiveHandler(category.id)" [ngClass]="{active: category.id ===(categories.activeCategoryId | async) }" class="nav-link"> {{category.name}}</button>
+  <!-- <a routerLink="/proudcts-info"></a> -->
+  <li *ngFor="let category of categoriesData" class="nav-item"> 
+    <button (click)="clickActiveHandler(category.id)" [ngClass]= "{active: category.id === (categories.activeCategoryId | async)}"  class="nav-link"> {{category.name}}</button>
+    
     </li>
+    
+    
   </ul>
 
-
-  <ul *ngIf="productlist.length > 0">
+  
+<section>
+  <ul *ngIf="productlist.length > 0"> 
     <div *ngFor="let product of productlist" class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img [src]="product.image" class="card-img-top" alt="">
         <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.price}}</p>
+
+          <a class="btn btn-primary" routerLink="[product.id]"></a>
         </div>
       </div>
   </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</section>
 
   <!-- <div class="products">
-  <div *ngFor="let product of productsData" class="card" style="width: 18rem; display: flex;">
+      <button (click)="clickActiveHandler(prod.id)" [ngClass]= "{active: prod.id === (categories.activeCategoryId | async)}"  class="nav-link"> {{prod.name}}</button>
+  <div *ngFor="let prod of allProduct" class="card" style="width: 18rem; display: flex;">
     <img [src]="product.image" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title">{{product.price}}</h5> 
