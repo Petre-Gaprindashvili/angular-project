@@ -1,10 +1,14 @@
 <ul class="nav nav-pills">
-  <!-- <a routerLink="/proudcts-info"></a> -->
+  <li class="nav-item"> 
+    
+    <button (click)="clickActiveHandler(8888)" [ngClass]= "{active: 8888 === (categories.activeCategoryId | async)}"  class="nav-link"> All</button>
+  </li>
+  
   <li *ngFor="let category of categoriesData" class="nav-item"> 
+
     <button (click)="clickActiveHandler(category.id)" [ngClass]= "{active: category.id === (categories.activeCategoryId | async)}"  class="nav-link"> {{category.name}}</button>
     
     </li>
-    
     
   </ul>
 
@@ -22,6 +26,15 @@
       </div>
   </ul>
 </section>
+
+
+<div *ngFor="let all of allProducts" class="card" style="width: 18rem;">
+  <img [src]="all.image" class="card-img-top" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{all.name}}</h5>
+    <p class="card-text">{{all.price}}</p>
+
+  </div>
 
   <!-- <div class="products">
       <button (click)="clickActiveHandler(prod.id)" [ngClass]= "{active: prod.id === (categories.activeCategoryId | async)}"  class="nav-link"> {{prod.name}}</button>
