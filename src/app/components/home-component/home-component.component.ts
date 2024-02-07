@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceCategoriesService } from 'src/app/services/service-categories.service';
 import { GategoryData } from 'src/app/interfaces/gategory-data';
 import { CategoryId } from 'src/app/interfaces/category-id';
-import { reduce } from 'rxjs';
+import { CartAddingServiceService } from 'src/app/services/cart-adding-service.service';
 
 @Component({
   selector: 'app-home-component',
@@ -12,7 +12,7 @@ import { reduce } from 'rxjs';
 
 
 export class HomeComponentComponent implements OnInit {
-  constructor(public categories:ServiceCategoriesService){}
+  constructor(public categories:ServiceCategoriesService, private cartadding:CartAddingServiceService){}
   allProducts:CategoryId []=[]
   categoriesData:GategoryData[] = [];
   productlist:CategoryId[]=[];
@@ -25,38 +25,39 @@ export class HomeComponentComponent implements OnInit {
   ngOnInit(): void {
     this.categories.getAllCategories().subscribe((response=>{  
       this.categoriesData = response;
-      // this.categories.activeCategoryId.next(response[6].id)
-
+      this.categories.activeCategoryId.next(response[0].id)
     }))
-
 
      this.categories.activeCategoryId.subscribe((id)=>{
 
-
-      if(id){
-
-        this.categories.getCategoryById(this.categories.activeCategoryId.value as number).subscribe((info=>{
-          this.productlist = info.products
-          
-        }))
-      } 
-        else{
-          this.categories.getAllProducts().subscribe(( all=>{
-            this.allProducts = all;
-            this.categories.activeCategoryId
-             return
-            
-          }))
-        }
-      
-
+// this.categories.getAllProducts().subscribe(( all=>{
+//             this.allProducts = all;
         
-          
+//           }))
+if(id){
+
+  this.categories.getCategoryById(id as number).subscribe((info=>{
+    this.productlist = info.products
+    
+  }))
+}
+              
         })
         
         
       }
       
+      addTocartt(id:number,price:number){
+        const DAta= {
+          productId:id,
+          quantity:id,
+          price
+        }
+this.cartadding.addToBaskett(DAta).subscribe((response=>{
+  this.cartadding.addedNewCartitemsObservable.next(1)
+    alert("added")
+}))
+      }
    
 
 }

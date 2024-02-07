@@ -1,7 +1,7 @@
 <ul class="nav nav-pills">
   <li class="nav-item"> 
     
-    <button (click)="clickActiveHandler(8888)" [ngClass]= "{active: 8888 === (categories.activeCategoryId | async)}"  class="nav-link"> All</button>
+    <button (click)="clickActiveHandler(88)" [ngClass]= "{active: 88 === (categories.activeCategoryId | async)}"  class="nav-link"> All</button>
   </li>
   
   <li *ngFor="let category of categoriesData" class="nav-item"> 
@@ -20,8 +20,8 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text">{{product.price}}</p>
-
           <a class="btn btn-primary" routerLink="[product.id]"></a>
+          <button (click)="addTocartt(product.id, product.price)">add to cart </button> 
         </div>
       </div>
   </ul>
