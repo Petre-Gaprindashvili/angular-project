@@ -20,9 +20,9 @@ getAllCategories(){
 }
 
 
-// getAllProducts(){
-//   return this.http.get<CategoryId[]>("https://restaurant.webwide.ge/api/Products/GetAll")
-// }
+getAllProducts(id:number){
+  return this.http.get<{id:number; name:string; products: CategoryId[]}>(`https://restaurant.webwide.ge/api/Products/GetAll/${id}`)
+}
 
 getCategoryById(id:number){
   return this.http.get<{id:number; name:string; products: CategoryId[]}>(`https://restaurant.webwide.ge/api/Categories/GetCategory/${id}`)

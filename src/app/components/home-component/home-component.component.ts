@@ -19,34 +19,66 @@ export class HomeComponentComponent implements OnInit {
   clickActiveHandler(id:number){
  this.categories.activeCategoryId.next(id);
   }
+  
 
 
 
   ngOnInit(): void {
+
+   
+   
+
+   
+
     this.categories.getAllCategories().subscribe((response=>{  
+
       this.categoriesData = response;
-      this.categories.activeCategoryId.next(response[0].id)
+      
+      this.categories.activeCategoryId.next(response[35].id)
+
+     
+        
+ 
+      
     }))
 
-     this.categories.activeCategoryId.subscribe((id)=>{
+     this.categories.activeCategoryId.subscribe((id)=> {
 
-// this.categories.getAllProducts().subscribe(( all=>{
-//             this.allProducts = all;
+      if(id ==88){
+        this.categories.getAllProducts(id ).subscribe((all=>{
+         this.productlist = all.products
+        }))  
         
-//           }))
-if(id){
-
-  this.categories.getCategoryById(id as number).subscribe((info=>{
-    this.productlist = info.products
-    
-  }))
-}
-              
-        })
-        
-        
+        return
       }
-      
+          
+           if(id){
+
+          this.categories.getCategoryById(id as number).subscribe((info=>{
+       this.productlist = info.products
+    
+    
+       }))
+      }  
+    
+
+          
+       })
+      }
+          
+            
+            
+            
+            
+            
+          
+          
+          
+  
+
+
+
+     
       addTocartt(id:number,price:number){
         const DAta= {
           productId:id,
@@ -58,6 +90,7 @@ this.cartadding.addToBaskett(DAta).subscribe((response=>{
     alert("added")
 }))
       }
+    
    
 
 }

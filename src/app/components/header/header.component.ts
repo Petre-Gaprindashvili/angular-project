@@ -1,6 +1,9 @@
 import { Component, OnInit, HostListener, } from '@angular/core';
 import { CartAddingServiceService } from 'src/app/services/cart-adding-service.service';
-import { cartdatadetails } from 'src/app/interfaces/cart-datadetails';
+import { ServiceCategoriesService } from 'src/app/services/service-categories.service';
+import { GategoryData } from 'src/app/interfaces/gategory-data';
+
+
 
 
 @Component({
@@ -24,18 +27,12 @@ export class HeaderComponent implements OnInit {
 
   currentIndex: number = 0;
 
+  categoriesData:GategoryData[] = [];
 
-  cartItems:cartdatadetails[] =[]
-  totalNumberOfCart = 0;
+
   ngOnInit() {
-
-    this.cartadding.getAllToBasket().subscribe((response=>{
-      this.cartItems =response
-      this.totalNumberOfCart = response.length
-    }))
-    this.cartadding.addedNewCartitemsObservable.subscribe((data=>{
-      this.totalNumberOfCart += data
-    }))
+ 
+    
 
 
 

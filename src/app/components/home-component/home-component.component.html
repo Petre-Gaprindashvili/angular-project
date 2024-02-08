@@ -1,20 +1,31 @@
 <ul class="nav nav-pills">
   <li class="nav-item"> 
-    
-    <button (click)="clickActiveHandler(88)" [ngClass]= "{active: 88 === (categories.activeCategoryId | async)}"  class="nav-link"> All</button>
+    <button (click)="clickActiveHandler(88)" [ngClass]= "{active: 88 === (categories.activeCategoryId | async)}"  class="nav-link">alll</button>
   </li>
-  
   <li *ngFor="let category of categoriesData" class="nav-item"> 
+    
 
     <button (click)="clickActiveHandler(category.id)" [ngClass]= "{active: category.id === (categories.activeCategoryId | async)}"  class="nav-link"> {{category.name}}</button>
     
     </li>
-    
+     
   </ul>
 
   
+
+
+
+
+
+
+
+
+
+
+
 <section>
   <ul *ngIf="productlist.length > 0"> 
+
     <div *ngFor="let product of productlist" class="card" style="width: 18rem;">
         <img [src]="product.image" class="card-img-top" alt="">
         <div class="card-body">
@@ -27,22 +38,15 @@
   </ul>
 </section>
 
+  <div *ngFor="let all of allProducts" class="card" style="width: 18rem;">
 
-<div *ngFor="let all of allProducts" class="card" style="width: 18rem;">
-  <img [src]="all.image" class="card-img-top" alt="">
+  <img [src]="all.image" class="card-img-top" alt=""> 
+
   <div class="card-body">
     <h5 class="card-title">{{all.name}}</h5>
     <p class="card-text">{{all.price}}</p>
 
-  </div>
+  </div>  
 
-  <!-- <div class="products">
-      <button (click)="clickActiveHandler(prod.id)" [ngClass]= "{active: prod.id === (categories.activeCategoryId | async)}"  class="nav-link"> {{prod.name}}</button>
-  <div *ngFor="let prod of allProduct" class="card" style="width: 18rem; display: flex;">
-    <img [src]="product.image" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title">{{product.price}}</h5> 
-          
-    </div>
-  </div>
-  </div> -->
+
+ 

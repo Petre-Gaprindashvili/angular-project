@@ -2,7 +2,7 @@ export interface Addedcartitemsdetail {
     quantity:number;
     product: {
         image:string;
-        id:number
+        id:number;
         name:string;
         price: number;
     
