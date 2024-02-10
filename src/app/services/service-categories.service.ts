@@ -4,6 +4,8 @@ import { GategoryData } from '../interfaces/gategory-data';
 import { CategoryId } from '../interfaces/category-id';
 import { Addedcartitemsdetail } from '../interfaces/addedcartitemsdetail';
 
+
+
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
@@ -20,8 +22,8 @@ getAllCategories(){
 }
 
 
-getAllProducts(id:number){
-  return this.http.get<{id:number; name:string; products: CategoryId[]}>(`https://restaurant.webwide.ge/api/Products/GetAll/${id}`)
+getAllProducts(){
+  return this.http.get< CategoryId[]>(`https://restaurant.webwide.ge/api/Products/GetAll`)
 }
 
 getCategoryById(id:number){

@@ -13,7 +13,7 @@ import { CartAddingServiceService } from 'src/app/services/cart-adding-service.s
 
 export class HomeComponentComponent implements OnInit {
   constructor(public categories:ServiceCategoriesService, private cartadding:CartAddingServiceService){}
-  allProducts:CategoryId []=[]
+  // allProducts:CategoryId []=[]
   categoriesData:GategoryData[] = [];
   productlist:CategoryId[]=[];
   clickActiveHandler(id:number){
@@ -33,31 +33,31 @@ export class HomeComponentComponent implements OnInit {
     this.categories.getAllCategories().subscribe((response=>{  
 
       this.categoriesData = response;
+      // this.categories.activeCategoryId.next(response[].id)
       
-      this.categories.activeCategoryId.next(response[35].id)
-
-     
-        
- 
+      
+      
+      
+      
       
     }))
+    
+    this.categories.activeCategoryId.subscribe((id)=> {
+      
+      if(id){
+        this.categories.getCategoryById(id as number).subscribe((info=>{
+          this.productlist = info.products 
 
-     this.categories.activeCategoryId.subscribe((id)=> {
-
-      if(id ==88){
-        this.categories.getAllProducts(id ).subscribe((all=>{
-         this.productlist = all.products
         }))  
         
-        return
+  
       }
-          
-           if(id){
+             else{
+                
+       this.categories.getAllProducts().subscribe((all=>{ 
+        this.productlist = all
 
-          this.categories.getCategoryById(id as number).subscribe((info=>{
-       this.productlist = info.products
-    
-    
+
        }))
       }  
     

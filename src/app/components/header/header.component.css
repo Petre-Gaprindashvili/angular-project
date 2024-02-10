@@ -14,15 +14,18 @@
 
   
   nav{
-    /* overflow: hidden; */
-    /* background-color: #333; */
-    /* padding: 15px 0; */
+    /* background-color:#0f0f0f; */
+
     width: 100%;
     top: 0;
     z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: space-around; 
+    justify-content: space-between; 
+    padding-left: 80px;
+    padding-right: 80px;
+  
+    
     
    height: 100px;
   }
@@ -30,11 +33,11 @@
   .sticky {
     position: fixed;
     top: o;
-    background-color:darkslategray;
+    background-color:#0f0f0f;
     transition: 0s;
   
     width: 100%;
-    animation: slideDown 0s ease forwards;
+    animation: slideDown 0.7s ease forwards;
     
 }
 @keyframes slideDown {
@@ -47,33 +50,53 @@
 }
 
 
-  header{
+  .header{
+display: flex;
+flex-direction: column;
+text-decoration: none;
 
-    color: #fff;
+    color:#fff;
     font-size: large;
     font-family: sans-serif;
     /* margin-top: 80px; */
   }
+  .header h5{
+    margin-left: 10px;
+    font-size:15px;
+  }
   li {
     list-style: none;
     display: flex;
-    gap: 2.5em;
+    align-items: center;
+    gap: 3em;
     /* margin-top: 80px; */
   }
   li a{
     text-decoration: none;
     color: #fff;
-  }
-  h1{
-    text-align:center;
-    font-size: larger;
-    color:#fff;
+    font-size: large;
     font-weight: 700;
     font-family: sans-serif;
-    padding: 100px;
-    
-    
   }
-  .cart{
-    background-color: red;
+
+ 
+span a{
+color: #fff;
+font-family: sans-serif;
+font-size: large;
+font-weight: 700;
+}
+
+
+ h1{
+  font-family: sans-serif;
+  font-size: larger;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 60px;
+
   }
+
+  
+
