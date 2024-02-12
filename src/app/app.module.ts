@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
 import { HomeComponentComponent } from './components/home-component/home-component.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponentComponent } from './components/footer-component/footer-component.component';
@@ -15,6 +17,8 @@ const routes: Routes = [
   {
     path: "",
     component:  HomeComponentComponent,
+     
+
     
   },
   
@@ -23,10 +27,10 @@ path:"cart",
 component: CartComponentComponent,
 },
 
-{
-    path:":products-info",
-    component: ProudctsInfoComponent,
-  },
+// {
+//     path:"products",
+//     component: ProudctsInfoComponent,
+//   },
   
 ];
 
@@ -42,7 +46,7 @@ component: CartComponentComponent,
   
   ],
   imports: [
-    [BrowserModule, HttpClientModule, RouterModule.forRoot(routes),
+    [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
     CarouselModule.forRoot()
   ],
   ],

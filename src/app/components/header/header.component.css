@@ -34,10 +34,10 @@
     position: fixed;
     top: o;
     background-color:#0f0f0f;
-    transition: 0s;
+    transition: 0.4s;
   
     width: 100%;
-    animation: slideDown 0.7s ease forwards;
+    animation: slideDown 0s ease forwards;
     
 }
 @keyframes slideDown {
@@ -58,7 +58,6 @@ text-decoration: none;
     color:#fff;
     font-size: large;
     font-family: sans-serif;
-    /* margin-top: 80px; */
   }
   .header h5{
     margin-left: 10px;
@@ -94,7 +93,7 @@ font-weight: 700;
   color: #fff;
   font-weight: 700;
   text-align: center;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 
   }
 

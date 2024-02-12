@@ -1,25 +1,27 @@
-<ul class="nav nav-pills">
+
+<article class="nav nav-pills">
   <li class="nav-item"> 
     <button (click)="clickActiveHandler(88)" [ngClass]= "{active: 88 === (categories.activeCategoryId | async)}"  class="nav-link">alll</button>
   </li>
   <li *ngFor="let category of categoriesData" class="nav-item"> 
     
 
-    <button (click)="clickActiveHandler(category.id)" [ngClass]= "{active: category.id === (categories.activeCategoryId | async)}"  class="nav-link"> {{category.name}}</button>
+    <button  (click)="clickActiveHandler(category.id)" [ngClass]= "{active: category.id === (categories.activeCategoryId | async)}"  class=" but nav-link"> {{category.name}}</button>
     
     </li>
      
-  </ul>
-
-  
-
-
-
-
-
-
-
-
+  </article>
+<form (ngSubmit)="filterHandler(f)" #f="ngForm" >
+  <div>
+    <p>filter</p>
+    <input min="0" max="4" ngModel type="range" name="spiciness"> <br>
+    <input ngModel type="radio" id="nuts" name="nuts" [value]="true"  >
+    <label for="nuts1">no nuts</label><br>
+    <input ngModel type="radio" id="vegeterian" name="vegeterian" [value]="false">
+    <label for="vegeterian2">vegetarian only</label><br>  
+   <button type="submit">apply</button> 
+  </div>
+</form>
 
 
 
@@ -37,15 +39,7 @@
       </div>
   </ul>
 </section>
-  <!-- <div *ngFor="let all of allProducts" class="card" style="width: 18rem;"> -->
-    
-  <!-- <img [src]="all.image" class="card-img-top" alt=""> 
-  
-  <div class="card-body">
-    <h5 class="card-title">{{all.name}}</h5>
-    <p class="card-text">{{all.price}}</p>
-     -->
-  <!-- </div>   -->
+
   
 
  

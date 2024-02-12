@@ -3,6 +3,8 @@ import { ServiceCategoriesService } from 'src/app/services/service-categories.se
 import { GategoryData } from 'src/app/interfaces/gategory-data';
 import { CategoryId } from 'src/app/interfaces/category-id';
 import { CartAddingServiceService } from 'src/app/services/cart-adding-service.service';
+import { identifierName } from '@angular/compiler';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home-component',
@@ -33,7 +35,7 @@ export class HomeComponentComponent implements OnInit {
     this.categories.getAllCategories().subscribe((response=>{  
 
       this.categoriesData = response;
-      // this.categories.activeCategoryId.next(response[].id)
+      // this.categories.activeCategoryId.next(response[7].id)
       
       
       
@@ -45,21 +47,27 @@ export class HomeComponentComponent implements OnInit {
     this.categories.activeCategoryId.subscribe((id)=> {
       
       if(id){
-        this.categories.getCategoryById(id as number).subscribe((info=>{
-          this.productlist = info.products 
+          
+
+              this.categories.getCategoryById(id as number).subscribe((info=>{
+                this.productlist = info.products 
+                
+                  
+                
+              }))
+            }  
+
+      else{
+        
+        this.categories.getAllProducts().subscribe((all=>{ 
+          this.productlist = all
+       
 
         }))  
         
   
       }
-             else{
-                
-       this.categories.getAllProducts().subscribe((all=>{ 
-        this.productlist = all
-
-
-       }))
-      }  
+      // 
     
 
           
@@ -93,10 +101,13 @@ this.cartadding.addToBaskett(DAta).subscribe((response=>{
     
    
 
+
+      filterHandler(formValue:NgForm){
+        console.log(formValue.form.value)
+        }
 }
     
   
-
 
 
 

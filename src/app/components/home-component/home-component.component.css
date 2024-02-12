@@ -1,12 +1,18 @@
- /* .products{
+
+
+
+article{
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 1em;
     justify-content: center;
-}  */
+}
+article button{
+  
+
+color: brown;
+}
 section ul{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr )
+
 }
