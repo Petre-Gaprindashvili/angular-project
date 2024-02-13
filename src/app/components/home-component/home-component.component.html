@@ -11,14 +11,16 @@
     </li>
      
   </article>
-<form (ngSubmit)="filterHandler(f)" #f="ngForm" >
+<form  (ngSubmit)="filterHandler(f)" #f="ngForm" >
   <div>
     <p>filter</p>
-    <input min="0" max="4" ngModel type="range" name="spiciness"> <br>
-    <input ngModel type="radio" id="nuts" name="nuts" [value]="true"  >
-    <label for="nuts1">no nuts</label><br>
-    <input ngModel type="radio" id="vegeterian" name="vegeterian" [value]="false">
-    <label for="vegeterian2">vegetarian only</label><br>  
+
+    <label for="spiciness">spiciness</label>
+    <input min="0" max="4" ngModel type="range" id="" name="spiciness"> <br>
+    <p>vege</p>
+    <input ngModel type="radio" id="vegeterian" name="vegeterian" [value]="true">
+    <p>no nuts</p>
+    <input ngModel type="radio" id="nuts" name="nuts" [value]="false"  >
    <button type="submit">apply</button> 
   </div>
 </form>
@@ -32,7 +34,12 @@
         <img [src]="product.image" class="card-img-top" alt="">
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">spiciness {{product.spiciness}}</p>
           <p class="card-text">{{product.price}}</p>
+          <p class="card-text">vegetarian{{product.vegeterian}}</p>
+          <p class="card-text">nuts{{product.nuts}}</p>
+
+
           <a class="btn btn-primary" routerLink="[product.id]"></a>
           <button (click)="addTocartt(product.id, product.price)">add to cart </button> 
         </div>

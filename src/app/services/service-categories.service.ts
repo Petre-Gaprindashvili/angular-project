@@ -12,9 +12,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceCategoriesService {
-  // productlist:CategoryId[]=[];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {  }
   activeCategoryId = new BehaviorSubject<number|null>(null); 
 
 getAllCategories(){
@@ -22,13 +21,27 @@ getAllCategories(){
 }
 
 
-getAllProducts(){
-  return this.http.get< CategoryId[]>(`https://restaurant.webwide.ge/api/Products/GetAll`)
+getAllProducts( 
+
+){
+  return this.http.get<CategoryId[]>(`https://restaurant.webwide.ge/api/Products/GetAll`)
 }
 
 getCategoryById(id:number){
-  return this.http.get<{id:number; name:string; products: CategoryId[]}>(`https://restaurant.webwide.ge/api/Categories/GetCategory/${id}`)
+  return this.http.get<{id:number; name:string;  products: CategoryId[]}>(`https://restaurant.webwide.ge/api/Categories/GetCategory/${id}`)
 }
+
+getAllFiltered(filterData:{
+  nuts:boolean;
+  vegeterian:boolean;
+  spiciness:number;
+  categoryId:number;
+  
+}){ 
+ return this.http.get<CategoryId[]>(`https://restaurant.webwide.ge/api/Products/GetFiltered?nuts=${filterData.nuts}&vegeterian=${filterData.vegeterian}&spiciness=${filterData.spiciness}&categoryId=${filterData.categoryId}`)
+}
+
+
 
 
 

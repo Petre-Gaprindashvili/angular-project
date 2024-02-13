@@ -35,7 +35,7 @@ export class HomeComponentComponent implements OnInit {
     this.categories.getAllCategories().subscribe((response=>{  
 
       this.categoriesData = response;
-      // this.categories.activeCategoryId.next(response[7].id)
+      this.categories.activeCategoryId.next(response[0].id)
       
       
       
@@ -46,28 +46,29 @@ export class HomeComponentComponent implements OnInit {
     
     this.categories.activeCategoryId.subscribe((id)=> {
       
-      if(id){
+      if (id==88){
           
+        this.categories.getAllProducts().subscribe((all=>{
+          this.productlist = all
+        
+            }))
+          }
 
-              this.categories.getCategoryById(id as number).subscribe((info=>{
-                this.productlist = info.products 
-                
-                  
-                
-              }))
-            }  
+
 
       else{
         
-        this.categories.getAllProducts().subscribe((all=>{ 
-          this.productlist = all
-       
+        this.categories.getCategoryById(id as number).subscribe((info=>{
+          this.productlist = info.products
 
-        }))  
+  
+          
+          }))  
+        
         
   
       }
-      // 
+      
     
 
           
@@ -83,7 +84,6 @@ export class HomeComponentComponent implements OnInit {
           
           
   
-
 
 
      
@@ -103,7 +103,30 @@ this.cartadding.addToBaskett(DAta).subscribe((response=>{
 
 
       filterHandler(formValue:NgForm){
-        console.log(formValue.form.value)
+
+
+      
+      
+       if(this.categories.activeCategoryId.value){
+
+        
+      
+
+         this.categories.getAllFiltered({
+           nuts:formValue.value.nuts,
+           vegeterian:formValue.value.vegeterian,
+           spiciness:formValue.value.spiciness,
+           categoryId: this.categories.activeCategoryId.value
+          
+          
+           
+           
+           
+          }).subscribe((response=>{
+            this.productlist = response
+            // console.log(response)
+          }))
+        }
         }
 }
     

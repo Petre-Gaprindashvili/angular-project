@@ -6,5 +6,6 @@ export interface CategoryId {
     nuts:boolean;
     categoryId: number;
     vegeterian:boolean;
-
+    spiciness:number;
+ 
 }
