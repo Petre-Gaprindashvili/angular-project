@@ -46,17 +46,18 @@ export class HomeComponentComponent implements OnInit {
     
     this.categories.activeCategoryId.subscribe((id)=> {
       
-      if (id==88){
+      if (id===88){
           
         this.categories.getAllProducts().subscribe((all=>{
           this.productlist = all
+      
         
             }))
           }
 
 
 
-      else{
+     else {
         
         this.categories.getCategoryById(id as number).subscribe((info=>{
           this.productlist = info.products
@@ -95,7 +96,7 @@ export class HomeComponentComponent implements OnInit {
         }
 this.cartadding.addToBaskett(DAta).subscribe((response=>{
   this.cartadding.addedNewCartitemsObservable.next(1)
-    alert("added")
+alert("add")
 }))
       }
     

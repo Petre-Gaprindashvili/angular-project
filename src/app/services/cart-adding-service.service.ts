@@ -10,16 +10,16 @@ import { Subject } from 'rxjs';
 export class CartAddingServiceService {
 
   constructor(private http:HttpClient) {}
-
+         
   addedNewCartitemsObservable = new Subject<number>()
 
   addToBaskett(productData:cartdatadetails){
-return this.http.post("https://restaurant.webwide.ge/api/Baskets/AddToBasket", productData)
+return this.http.post("https://restaurant.stepprojects.ge/api/Baskets/AddToBasket", productData)
   }
 
 
   getAllToBasket(){
-    return this.http.get<cartdatadetails[]>("https://restaurant.webwide.ge/api/Baskets/GetAll")
+    return this.http.get<cartdatadetails[]>("https://restaurant.stepprojects.ge/api/Baskets/GetAll")
    
   }
 

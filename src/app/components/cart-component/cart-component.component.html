@@ -1,22 +1,12 @@
 
 
-<!-- <div class="addeditems">
-<div *ngFor="let items of addedItemsCartList " class="card" style="width: 12rem;">
-    <img class="card-img-top" [src]="items.product.image" alt="Card image cap">
-    <div class="card-body">
-        <p>{{items.product.name}}</p>
-        <p>{{items.quantity}}</p>
-        <p>{{items.product.price}}</p>
-  </div>
-  </div> -->
-
 
 
  <div class="addeditems">
 
      <aside>
   <div *ngFor="let items of addedItemsCartList " class="card" style="width: 12rem;">
-    <img class="card-img-top" [src]="items.product.image" alt="Card image cap">
+    <img class="card-img-top" [src]="items.product.image" alt="">
     <ul class="list-group list-group-flush">
         <button (click)="deletecartitems(items.product.id)"> delete</button>
       <li class="list-group-item">{{items.product.name}}</li>
@@ -24,7 +14,7 @@
       <li class="list-group-item">{{items.product.price}}</li>
 
 
-      <span>- {{totalNumberOfCart }} +</span>
+      <span>- {{totalNumberOfCart}} +</span>
     </ul>
 </div>
 </aside>

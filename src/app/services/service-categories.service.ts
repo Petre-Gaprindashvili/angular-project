@@ -17,18 +17,18 @@ export class ServiceCategoriesService {
   activeCategoryId = new BehaviorSubject<number|null>(null); 
 
 getAllCategories(){
- return  this.http.get<GategoryData[]>("https://restaurant.webwide.ge/api/Categories/GetAll")
+ return  this.http.get<GategoryData[]>('https://restaurant.stepprojects.ge/api/Categories/GetAll')
 }
 
 
 getAllProducts( 
 
 ){
-  return this.http.get<CategoryId[]>(`https://restaurant.webwide.ge/api/Products/GetAll`)
+  return this.http.get<CategoryId[]>(`https://restaurant.stepprojects.ge/api/Products/GetAll`)
 }
 
 getCategoryById(id:number){
-  return this.http.get<{id:number; name:string;  products: CategoryId[]}>(`https://restaurant.webwide.ge/api/Categories/GetCategory/${id}`)
+  return this.http.get<{id:number; name:string;  products: CategoryId[]}>(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${id}`)
 }
 
 getAllFiltered(filterData:{
@@ -38,7 +38,7 @@ getAllFiltered(filterData:{
   categoryId:number;
   
 }){ 
- return this.http.get<CategoryId[]>(`https://restaurant.webwide.ge/api/Products/GetFiltered?nuts=${filterData.nuts}&vegeterian=${filterData.vegeterian}&spiciness=${filterData.spiciness}&categoryId=${filterData.categoryId}`)
+ return this.http.get<CategoryId[]>(`https://restaurant.stepprojects.ge/api/Products/GetFiltered?nuts=${filterData.nuts}&vegeterian=${filterData.vegeterian}&spiciness=${filterData.spiciness}&categoryId=${filterData.categoryId}`)
 }
 
 
@@ -46,7 +46,7 @@ getAllFiltered(filterData:{
 
 
 getAllToBasket(){
-  return this.http.get<Addedcartitemsdetail[]>("https://restaurant.webwide.ge/api/Baskets/GetAll")
+  return this.http.get<Addedcartitemsdetail[]>('https://restaurant.stepprojects.ge/api/Baskets/GetAll')
  
 }
 
