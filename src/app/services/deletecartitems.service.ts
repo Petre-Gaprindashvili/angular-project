@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class DeletecartitemsService {
   constructor(private http:HttpClient) { }
 
   deleteCartItemsFromBasket(id:number){
-  return  this.http.delete(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${id}`)
+  return this.http.delete(`${environment.ApiUrl}/api/Baskets/DeleteProduct/${id}`)
   }
  
 }

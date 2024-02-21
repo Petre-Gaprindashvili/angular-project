@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { GategoryData } from '../interfaces/gategory-data';
 import { CategoryId } from '../interfaces/category-id';
 import { Addedcartitemsdetail } from '../interfaces/addedcartitemsdetail';
+import { environment } from 'src/environments/environment.development';
 
 
 
@@ -17,18 +18,18 @@ export class ServiceCategoriesService {
   activeCategoryId = new BehaviorSubject<number|null>(null); 
 
 getAllCategories(){
- return  this.http.get<GategoryData[]>('https://restaurant.stepprojects.ge/api/Categories/GetAll')
+ return  this.http.get<GategoryData[]>(`${environment.ApiUrl}/api/Categories/GetAll`)
 }
 
 
 getAllProducts( 
 
 ){
-  return this.http.get<CategoryId[]>(`https://restaurant.stepprojects.ge/api/Products/GetAll`)
+  return this.http.get<CategoryId[]>(`${environment.ApiUrl}/api/Products/GetAll`)
 }
 
 getCategoryById(id:number){
-  return this.http.get<{id:number; name:string;  products: CategoryId[]}>(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${id}`)
+  return this.http.get<{id:number; name:string;  products: CategoryId[]}>(`${environment.ApiUrl}/api/Categories/GetCategory/${id}`)
 }
 
 getAllFiltered(filterData:{
@@ -38,7 +39,7 @@ getAllFiltered(filterData:{
   categoryId:number;
   
 }){ 
- return this.http.get<CategoryId[]>(`https://restaurant.stepprojects.ge/api/Products/GetFiltered?nuts=${filterData.nuts}&vegeterian=${filterData.vegeterian}&spiciness=${filterData.spiciness}&categoryId=${filterData.categoryId}`)
+ return this.http.get<CategoryId[]>(`${environment.ApiUrl}/api/Products/GetFiltered?nuts=${filterData.nuts}&vegeterian=${filterData.vegeterian}&spiciness=${filterData.spiciness}&categoryId=${filterData.categoryId}`)
 }
 
 
@@ -46,7 +47,7 @@ getAllFiltered(filterData:{
 
 
 getAllToBasket(){
-  return this.http.get<Addedcartitemsdetail[]>('https://restaurant.stepprojects.ge/api/Baskets/GetAll')
+  return this.http.get<Addedcartitemsdetail[]>(`${environment.ApiUrl}/api/Baskets/GetAll`)
  
 }
 

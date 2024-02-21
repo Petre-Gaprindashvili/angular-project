@@ -1,22 +1,47 @@
 
+  
 
-
-
- <div class="addeditems">
-
-     <aside>
-  <div *ngFor="let items of addedItemsCartList " class="card" style="width: 12rem;">
-    <img class="card-img-top" [src]="items.product.image" alt="">
-    <ul class="list-group list-group-flush">
-        <button (click)="deletecartitems(items.product.id)"> delete</button>
+      
+    
+  
+  <article>
+    <aside>
+      
+      <p class="product">Product</p>
+    <div>
+      <p>Qty</p>
+      <p>Price</p>
+      <p>total</p>
+      </div>
+    </aside>
+    <section  *ngFor="let items of addedItemsCartList ">
+      <ul>
+      <button
+      (click)="deletecartitems(items.product.id)"
+      class="btn btn-danger"
+    >
+      Delete
+    </button>
+      <img class="card-img-top" [src]="items.product.image" alt="">
       <li class="list-group-item">{{items.product.name}}</li>
-      <li class="list-group-item">{{items.quantity}}</li>
-      <li class="list-group-item">{{items.product.price}}</li>
+      </ul>
+    <ul>
+      <li class="list-group-item">
+      
 
+        {{items.quantity }}
+        
+      </li>
+       <li class="list-group-item">{{items.product.price |currency}}</li> 
+      <p class="card-text">
+         {{ items.quantity * items.product.price | currency}}
 
-      <span>- {{totalNumberOfCart}} +</span>
+      </p>
     </ul>
-</div>
-</aside>
-  </div>
 
+   
+
+    </section>
+    <h2>Cart total price is: {{ totalNumberOfCart | currency }}</h2>
+
+  </article>

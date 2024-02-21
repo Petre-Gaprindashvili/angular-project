@@ -13,7 +13,7 @@ import { Addedcartitemsdetail } from 'src/app/interfaces/addedcartitemsdetail';
   styleUrls: ['./cart-component.component.css']
 })
 export class CartComponentComponent implements OnInit {
-constructor(private manager:ServiceCategoriesService,private deletedservice:DeletecartitemsService,private cartadding:CartAddingServiceService){}
+constructor(private manager:ServiceCategoriesService,private deletedservice:DeletecartitemsService,public cartadding:CartAddingServiceService){}
 addedItemsCartList: Addedcartitemsdetail[]=[];
 // deleteedproduct: Addedcartitemsdetail[ ]= []
 
@@ -23,32 +23,46 @@ ngOnInit(): void {
 
 
   this.cartadding.getAllToBasket().subscribe((response=>{
-    this.cartItems =response
-    this.totalNumberOfCart = response.length
+    this.cartadding.cartItems =response
+    // this.totalNumberOfCart = response.length
+    this.calculateTotalPrice();
   }))
+  
+  
   this.cartadding.addedNewCartitemsObservable.subscribe((data=>{
     this.totalNumberOfCart += data
   }))
   
-
- this.manager.getAllToBasket().subscribe((response=>{
-this.addedItemsCartList = response
- }))
+  
+  this.manager.getAllToBasket().subscribe((response=>{
+    this.addedItemsCartList = response
+  }))
 }
+
+
+calculateTotalPrice() {
+  this.cartadding.cartItems.forEach((element: any) => {
+    const currentTotal = element.quantity * element.product.price;
+    this.totalNumberOfCart += currentTotal;
+  });
+}
+
+
 
 deletecartitems(id:number){
   this.deletedservice.deleteCartItemsFromBasket(id).subscribe(() =>{
 this.addedItemsCartList = this.addedItemsCartList.filter((items:Addedcartitemsdetail)=>items.product.id != id)
+
+this.totalNumberOfCart = 0;
+this.calculateTotalPrice();
   })
 
-  
-    
+
+}
+
+
 }
 
 
 
-
-
-
-}
 

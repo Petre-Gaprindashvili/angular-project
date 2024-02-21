@@ -1,7 +1,5 @@
 import { Component, OnInit, HostListener, } from '@angular/core';
 import { CartAddingServiceService } from 'src/app/services/cart-adding-service.service';
-import { ServiceCategoriesService } from 'src/app/services/service-categories.service';
-import { GategoryData } from 'src/app/interfaces/gategory-data';
 
 
 
@@ -20,14 +18,11 @@ export class HeaderComponent implements OnInit {
   
 
   images: string[] = [
-    'https://images.squarespace-cdn.com/content/v1/5e7bd4d9645ae354fdd81113/d51a67e8-0560-4554-87f8-d862e8d3ec37/M+104.jpg',
-    "https://w.wallha.com/ws/12/zIADxn8k.jpg"    
-  
+    'https://www.thaismileps.com/wp-content/plugins/autothumb/image.php?src=/wp-content/uploads/2022/01/banner.jpg&w=1920&h=920&zc=1&hash=922f4d1d8b9609aba59026f3b2abc3d0',
   ];
 
   currentIndex: number = 0;
 
-  categoriesData:GategoryData[] = [];
 
 
   ngOnInit() {

@@ -1,12 +1,12 @@
-
+<div class="full-container">
 <article class="nav nav-pills">
   <li class="nav-item"> 
-    <button (click)="clickActiveHandler(88)" [ngClass]= "{active: 88 === (categories.activeCategoryId | async)}"  class="nav-link">alll</button>
+    <span (click)="clickActiveHandler(9)" [ngClass]= "{active: 9 === (categories.activeCategoryId | async)}"  class="btn btn-outline-dark">All </span>
   </li>
   <li *ngFor="let category of categoriesData" class="nav-item"> 
     
 
-    <button  (click)="clickActiveHandler(category.id)" [ngClass]= "{active: category.id === (categories.activeCategoryId | async)}"  class=" but nav-link"> {{category.name}}</button>
+    <span (click)="clickActiveHandler(category.id)" [ngClass]= "{active: category.id === (categories.activeCategoryId | async)}"  class="btn btn-outline-dark"> {{category.name}} </span>
     
     </li>
      
@@ -35,18 +35,22 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text">spiciness {{product.spiciness}}</p>
-          <p class="card-text">{{product.price}}</p>
-          <p class="card-text">vegetarian{{product.vegeterian}}</p>
-          <p class="card-text">nuts{{product.nuts}}</p>
+      <aside>
+          <p class="card-text">vegetarian</p>
+          <p class="card-text">nuts</p>
+        </aside>
+          <aside>
+            <p class="card-text">{{product.price | currency}}</p>
+            <button (click)="addTocartt(product.id, product.price)">Add to cart </button> 
+          </aside>
+        
 
 
-          <a class="btn btn-primary" routerLink="[product.id]"></a>
-          <button (click)="addTocartt(product.id, product.price)">add to cart </button> 
         </div>
       </div>
   </ul>
 </section>
-
+</div>
   
 
  

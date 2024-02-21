@@ -5,6 +5,7 @@ import { CategoryId } from 'src/app/interfaces/category-id';
 import { CartAddingServiceService } from 'src/app/services/cart-adding-service.service';
 import { identifierName } from '@angular/compiler';
 import { NgForm } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-home-component',
@@ -18,6 +19,8 @@ export class HomeComponentComponent implements OnInit {
   // allProducts:CategoryId []=[]
   categoriesData:GategoryData[] = [];
   productlist:CategoryId[]=[];
+
+
   clickActiveHandler(id:number){
  this.categories.activeCategoryId.next(id);
   }
@@ -33,9 +36,9 @@ export class HomeComponentComponent implements OnInit {
    
 
     this.categories.getAllCategories().subscribe((response=>{  
-
+      
       this.categoriesData = response;
-      this.categories.activeCategoryId.next(response[0].id)
+      this.categories.activeCategoryId.next(response[99].id)
       
       
       
@@ -43,33 +46,35 @@ export class HomeComponentComponent implements OnInit {
       
       
     }))
-    
     this.categories.activeCategoryId.subscribe((id)=> {
       
-      if (id===88){
-          
-        this.categories.getAllProducts().subscribe((all=>{
-          this.productlist = all
       
+      
+      
+      
+      
+    
+      if(id){
+
+        this.categories.getCategoryById(id as number).subscribe((info=>{
+          this.productlist = info.products
+
+        
         
             }))
           }
 
-
-
-     else {
+   
+          else{
+            this.categories.getAllProducts().subscribe((all=>{
+              this.productlist = all
+    
+            
+                }))  
+              
+              
         
-        this.categories.getCategoryById(id as number).subscribe((info=>{
-          this.productlist = info.products
-
-  
-          
-          }))  
-        
-        
-  
-      }
-      
+            }
     
 
           
@@ -80,26 +85,49 @@ export class HomeComponentComponent implements OnInit {
             
             
             
-            
+    
           
-          
-          
+           
   
 
 
      
       addTocartt(id:number,price:number){
-        const DAta= {
-          productId:id,
-          quantity:id,
-          price
+
+        const existingProduct = this.cartadding.cartItems.find(
+          (item: any) => item.product.id === id
+        );
+        if (existingProduct) {
+          this.cartadding
+            .updateToBaketProducts({
+              price: existingProduct.price,
+              productId: id,
+              quantity: existingProduct.quantity + 1,
+            })
+            .subscribe((response) => {
+              existingProduct.quantity += 1;
+          
+              alert("hhhhhhhhhhh");
+            });
+
+          } else{
+    const DAta= { 
+              productId:id,
+              quantity:1,
+              price
+            }
+    this.cartadding.addToBaskett(DAta).subscribe((response=>{
+      this.cartadding.addedNewCartitemsObservable.next(1);
+      this.cartadding
+      .getAllToBasket()
+      .subscribe((response) => {
+        this.cartadding.cartItems = response;
+      })
+      alert("add")
+    }))
+          
         }
-this.cartadding.addToBaskett(DAta).subscribe((response=>{
-  this.cartadding.addedNewCartitemsObservable.next(1)
-alert("add")
-}))
       }
-    
    
 
 
@@ -125,7 +153,7 @@ alert("add")
            
           }).subscribe((response=>{
             this.productlist = response
-            // console.log(response)
+            
           }))
         }
         }

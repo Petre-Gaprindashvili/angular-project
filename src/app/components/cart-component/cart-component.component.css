@@ -1,5 +1,35 @@
-.addeditems aside{
+
+ article section{
     display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
+    align-items:center;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+
+
+    
+}
+article img{
+    width: 200px;
+}
+ul{
+    display: flex;
+    align-items: center;
+    gap: 3em;
+}
+
+aside{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+    
+}
+aside div{
+    display: flex;
+    gap: 4em;
+}
+.product{
+    margin-left: 140px;
 }

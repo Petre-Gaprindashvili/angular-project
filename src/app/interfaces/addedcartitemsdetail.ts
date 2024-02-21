@@ -5,6 +5,7 @@ export interface Addedcartitemsdetail {
         id:number;
         name:string;
         price: number;
+        
     
 }
 }
