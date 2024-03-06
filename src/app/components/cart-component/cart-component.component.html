@@ -5,6 +5,8 @@
     
   
   <article>
+    <div
+  *ngIf="addedItemsCartList.length > 0; else empty">
     <aside>
       
       <p class="product">Product</p>
@@ -14,6 +16,11 @@
       <p>total</p>
       </div>
     </aside>
+
+
+
+
+    
     <section  *ngFor="let items of addedItemsCartList ">
       <ul>
       <button
@@ -43,5 +50,14 @@
 
     </section>
     <h2>Cart total price is: {{ totalNumberOfCart | currency }}</h2>
+  </div>
 
   </article>
+ 
+  <ng-template #empty>
+    <h2 class="text-center mt-5">Cart is empty</h2>
+  
+    <a style="text-decoration: none; color: darkred; font-size: larger; font-weight: 500; font-family: sans-serif;  " class="text-center mt-5 d-block" [routerLink]="['']"
+      > Go to Home page</a
+    >
+  </ng-template>

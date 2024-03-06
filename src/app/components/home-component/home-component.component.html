@@ -11,17 +11,19 @@
     </li>
      
   </article>
+
+
 <form  (ngSubmit)="filterHandler(f)" #f="ngForm" >
   <div>
-    <p>filter</p>
+    <p>Filter Products</p>
 
-    <label for="spiciness">spiciness</label>
-    <input min="0" max="4" ngModel type="range" id="" name="spiciness"> <br>
-    <p>vege</p>
+    <label for="spiciness">Spiciness:</label> <br>
+    <input class="ssss"  min="0" max="4" ngModel type="range" id="" name="spiciness"> <br>
+    <p>Vegeterian</p>
     <input ngModel type="radio" id="vegeterian" name="vegeterian" [value]="true">
-    <p>no nuts</p>
+    <p>No Nuts</p>
     <input ngModel type="radio" id="nuts" name="nuts" [value]="false"  >
-   <button type="submit">apply</button> 
+   <button type="submit">Apply</button> 
   </div>
 </form>
 

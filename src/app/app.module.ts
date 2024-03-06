@@ -9,7 +9,6 @@ import { FooterComponentComponent } from './components/footer-component/footer-c
 import { HeaderComponent } from './components/header/header.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HttpClientModule } from '@angular/common/http';
-import { ProudctsInfoComponent } from './components/proudcts-info/proudcts-info.component';
 import { CartComponentComponent } from './components/cart-component/cart-component.component';
 
 
@@ -40,7 +39,7 @@ component: CartComponentComponent,
     HomeComponentComponent,
     FooterComponentComponent,
      HeaderComponent,
-     ProudctsInfoComponent,
+    
      CartComponentComponent,
      
   

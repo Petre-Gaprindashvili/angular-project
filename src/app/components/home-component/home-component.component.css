@@ -8,8 +8,14 @@ article{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid red;
+    
 
+
+}
+article li{
+    border-bottom: 4px solid red;
+
+    padding-bottom: 20px;
 
 }
 article span{
@@ -53,4 +59,25 @@ aside button{
     font-family: sans-serif;
     font-weight: 700;
     border: 1px solid brown;
+}
+form label{
+    margin-top: 14px;
+}
+
+form div{
+    display: flex;
+    justify-content: center;
+    
+    align-items:baseline;
+    gap: 1em;
+    background: darkgrey;
+    
+    margin-top: 20px;
+}
+form button{
+    background-color: red;
+    width: 130px;
+    height: 30px;
+    border: none;
+    color: #fff;
 }
