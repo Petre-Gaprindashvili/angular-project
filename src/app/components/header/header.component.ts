@@ -48,7 +48,7 @@ this.isSticky = true
     } else{
       this.isSticky =false
     }
-      // this.isSticky = window.pageYOffset >= 100;
+      this.isSticky = window.pageYOffset >= 100;
   }
 
   

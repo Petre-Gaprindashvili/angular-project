@@ -3,8 +3,6 @@ import { ServiceCategoriesService } from 'src/app/services/service-categories.se
 import { DeletecartitemsService } from 'src/app/services/deletecartitems.service';
 import { CartAddingServiceService } from 'src/app/services/cart-adding-service.service';
 import { cartdatadetails } from 'src/app/interfaces/cart-datadetails';
-
-
 import { Addedcartitemsdetail } from 'src/app/interfaces/addedcartitemsdetail';
 
 @Component({

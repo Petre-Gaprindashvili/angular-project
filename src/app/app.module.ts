@@ -20,16 +20,12 @@ const routes: Routes = [
 
     
   },
-  
-{
-path:"cart",
-component: CartComponentComponent,
-},
 
-// {
-//     path:"products",
-//     component: ProudctsInfoComponent,
-//   },
+  
+
+
+
+
   
 ];
 
@@ -41,6 +37,7 @@ component: CartComponentComponent,
      HeaderComponent,
     
      CartComponentComponent,
+     
      
   
   ],

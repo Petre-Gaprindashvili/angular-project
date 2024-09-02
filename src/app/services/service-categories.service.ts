@@ -52,5 +52,13 @@ getAllToBasket(){
 }
 
 
+getAllRooms(){
+  return this.http.get<any>('https://freeapi.miniprojectideas.com/api/HotelBooking/GetAllRooms')
+}
+
+
+
+
+
 
 }

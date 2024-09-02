@@ -14,39 +14,44 @@ import { Subject, takeUntil } from 'rxjs';
 })
 
 
-export class HomeComponentComponent implements OnInit {
+export class HomeComponentComponent  {
   constructor(public categories:ServiceCategoriesService, private cartadding:CartAddingServiceService){}
   // allProducts:CategoryId []=[]
   categoriesData:GategoryData[] = [];
   productlist:CategoryId[]=[];
 
 
-  clickActiveHandler(id:number){
- this.categories.activeCategoryId.next(id);
-  }
+//   clickActiveHandler(id:number){
+//  this.activeCategoryId.next(id);
+//   }
   
 
 
 
-  ngOnInit(): void {
+//   ngOnInit(): void {
+
+//     this.getAllRooms().subscribe((back=>{
+
+//       console.log(back)
+//     }))
 
    
    
 
    
 
-    this.categories.getAllCategories().subscribe((response=>{  
+//     this.getAllCategories().subscribe((response=>{  
       
-      this.categoriesData = response;
-      this.categories.activeCategoryId.next(response[99].id)
-      
-      
+//       this.categoriesData = response;
+//       this.categories.activeCategoryId.next(response[99].id)
       
       
       
       
-    }))
-    this.categories.activeCategoryId.subscribe((id)=> {
+      
+      
+//     }))
+//     this..activeCategoryId.subscribe((id)=> {
       
       
       
@@ -54,32 +59,33 @@ export class HomeComponentComponent implements OnInit {
       
       
     
-      if(id){
+//       if(id){
 
-        this.categories.getCategoryById(id as number).subscribe((info=>{
-          this.productlist = info.products
+//         this.getCategoryById(id as number).subscribe((info=>{
+//           this.productlist = info.products
 
         
         
-            }))
-          }
+//             }))
+//           }
 
    
-          else{
-            this.categories.getAllProducts().subscribe((all=>{
-              this.productlist = all
+//           else{
+//             this.getAllProducts().subscribe((all=>{
+            
+//               this.productlist = all
     
             
-                }))  
+//                 }))  
               
               
         
-            }
+//             }
     
 
           
-       })
-      }
+//        })
+//       }
           
             
             
@@ -92,72 +98,72 @@ export class HomeComponentComponent implements OnInit {
 
 
      
-      addTocartt(id:number,price:number){
+//       addTocartt(id:number,price:number){
 
-        const existingProduct = this.cartadding.cartItems.find(
-          (item: any) => item.product.id === id
-        );
-        if (existingProduct) {
-          this.cartadding
-            .updateToBaketProducts({
-              price: existingProduct.price,
-              productId: id,
-              quantity: existingProduct.quantity + 1,
-            })
-            .subscribe((response) => {
-              existingProduct.quantity += 1;
+//         const existingProduct = this.cartadding.cartItems.find(
+//           (item: any) => item.product.id === id
+//         );
+//         if (existingProduct) {
+//           this.cartadding
+//             .updateToBaketProducts({
+//               price: existingProduct.price,
+//               productId: id,
+//               quantity: existingProduct.quantity + 1,
+//             })
+//             .subscribe((response) => {
+//               existingProduct.quantity += 1;
           
-              alert("hhhhhhhhhhh");
-            });
+//               alert("hhhhhhhhhhh");
+//             });
 
-          } else{
-    const DAta= { 
-              productId:id,
-              quantity:1,
-              price
-            }
-    this.cartadding.addToBaskett(DAta).subscribe((response=>{
-      this.cartadding.addedNewCartitemsObservable.next(1);
-      this.cartadding
-      .getAllToBasket()
-      .subscribe((response) => {
-        this.cartadding.cartItems = response;
-      })
-      alert("add")
-    }))
+//           } else{
+//     const DAta= { 
+//               productId:id,
+//               quantity:1,
+//               price
+//             }
+//     this.cartadding.addToBaskett(DAta).subscribe((response=>{
+//       this.cartadding.addedNewCartitemsObservable.next(1);
+//       this.cartadding
+//       .getAllToBasket()
+//       .subscribe((response) => {
+//         this.cartadding.cartItems = response;
+//       })
+//       alert("add")
+//     }))
           
-        }
-      }
+//         }
+//       }
    
 
 
-      filterHandler(formValue:NgForm){
+//       filterHandler(formValue:NgForm){
 
 
       
       
-       if(this.categories.activeCategoryId.value){
+//        if(this.categories.activeCategoryId.value){
 
         
       
 
-         this.categories.getAllFiltered({
-           nuts:formValue.value.nuts,
-           vegeterian:formValue.value.vegeterian,
-           spiciness:formValue.value.spiciness,
-           categoryId: this.categories.activeCategoryId.value
+//          this.categories.getAllFiltered({
+//            nuts:formValue.value.nuts,
+//            vegeterian:formValue.value.vegeterian,
+//            spiciness:formValue.value.spiciness,
+//            categoryId: this.categories.activeCategoryId.value
           
           
            
            
            
-          }).subscribe((response=>{
-            this.productlist = response
+//           }).subscribe((response=>{
+//             this.productlist = response
             
-          }))
-        }
-        }
-}
+//           }))
+//         }
+//         }
+// }
     
   
 
@@ -175,3 +181,4 @@ export class HomeComponentComponent implements OnInit {
 
 
 
+}

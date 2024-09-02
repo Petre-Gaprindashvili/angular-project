@@ -1,4 +1,4 @@
 export const environment = {
-    ApiUrl: 'https://restaurant.stepprojects.ge',
+    ApiUrl: 'https://freeapi.miniprojectideas.com',
 
 };
